@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import React from "react";
 import "./App.css";
 import styled from "styled-components";
@@ -36,6 +37,8 @@ export default () => {
     incidentsRefetch,
   ] = useIssues("incident");
 
+  console.log("incidentsResults: ", incidentsResults)
+  console.log("componentsResults: ", componentsResults)
   return (
     <Container>
       <Header />

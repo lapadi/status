@@ -24,11 +24,11 @@ export default () => (
     <div></div>
     <Branding
       visible={process.env.REACT_APP_BRANDING !== "false"}
-      href="https://github.com/tadhglewis/issue-status"
+      href="https://lapadi.com"
       rel="noopener"
       target="_blank"
     >
-      Powered by Issue Status
+      Powered by Lapadi
     </Branding>
   </Footer>
 );

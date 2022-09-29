@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { useEffect, useState } from "react";
 
 export default () => {

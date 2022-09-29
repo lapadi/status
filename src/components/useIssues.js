@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { useState, useEffect } from "react";
 
 export default (label) => {
@@ -39,7 +40,16 @@ const fetchData = (setLoading, setError, setResults, label) => {
       setError();
       localStorage.setItem(`issueStatusLastFetch${label}`, new Date());
       localStorage.setItem(`issueStatus${label}`, JSON.stringify(data));
-      setResults(data);
+      let result = data;
+      if (label === "component") {
+        result = result.sort((a, b) => {
+          if (a.title < b.title) { return -1; }
+          if (a.title > b.title) { return 1; }
+          return 0;
+        })
+      }
+      console.log("data result:", label, result)
+      setResults(result);
       setLoading(false);
     })
     .catch((error) => {

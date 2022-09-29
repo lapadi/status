@@ -1,0 +1,36 @@
+{
+  "apps": [
+    {
+      "name": "lapadi:status:prod",
+      "script": "npx",
+      "interpreter": "none",
+      "args": "yarn start",
+      "exec_mode": "cluster",
+      "instances": 1,
+      "wait_ready": true,
+      "listen_timeout": 30000,
+      "env_production": {
+        "NODE_ENV": "production"
+      },
+      "env_development": {
+        "NODE_ENV": "development"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "root",
+      "host": [
+        {
+          "host": "s1.lapadi.com",
+          "port": "8741"
+        }
+      ],
+      "key": "~/.ssh/id_rsa",
+      "ref": "origin/main",
+      "repo": "https://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@github.com/lapadi/status.git",
+      "path": "/home/admin/web/status.lapadi.com/nodeapp",
+      "post-deploy": "git pull && sh build.sh"
+    }
+  }
+}
